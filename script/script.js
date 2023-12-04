@@ -10,19 +10,19 @@ el("form", {action: '#', className: 'form', id: 'form'},
 
 el(".form__input-wrap form__input-wrap_holder",
  [el("label", {className: 'form__label form__holder-label'},  "Card Holder"),
-  el("input", {type: 'text', className: 'input input__holder'})]), 
+  el("input", {type: 'text', className: 'input input__holder', maxlength: '20'})]), 
   
   el(".form__input-wrap form__input-wrap_number",
   [el("label", {className: 'form__label form__number-label'},  "Card Number"),
-   el("input", {type: 'text', className: 'input input__number', id: 'cardNumber', maxlength: '16'})]),
+   el("input", {type: 'text', className: 'input input__number', id: 'cardNumber', maxlength: '19'})]),
 
    el(".form__input-wrap form__input-wrap_date",
  [el("label", {className: 'form__label form__date-label'},  "Card Expiry"),
-  el("input", {type: 'text', className: 'input input__date', maxlength: '4'})]),
+  el("input", {type: 'text', className: 'input input__date', maxlength: '5'})]),
 
   el(".form__input-wrap form__input-wrap_cvv",
  [el("label", {className: 'form__label form__cvv-label'},  "CVV"),
-  el("input", {type: 'text', className: 'input input__cvv'})]),
+  el("input", {type: 'text', className: 'input input__cvv', maxlength: '3'})]),
 
   el("button", {className: 'form__button'}, "CHECK OUT")
 
@@ -33,19 +33,23 @@ setChildren(document.body, div);
 const holder = document.querySelector(`.input__holder`);
 const number = document.querySelector(`.input__number`);
 const date = document.querySelector(`.input__date`);
+const cvv = document.querySelector(`.input__cvv`);
 
 const numberText = document.querySelector(`.card__number`);
 const nameText = document.querySelector(`.card__name`);
 const dateText = document.querySelector(`.card__date`);
 
 holder.addEventListener(`input`, () => {
-  nameText.textContent = holder.value = holder.value.replace(/[\w-]/gi, '');
+  nameText.textContent = holder.value = holder.value.replace(/[а-яА-ЯёЁ0-9-?!+-=]/gi, '');
 });
 number.addEventListener(`input`, () => {
   number.value = number.value.replace(/\D/g, '');
-  numberText.textContent = number.value.replace(/(\d{4})(?=\d)/g, '$1-');
+  numberText.textContent = number.value = number.value.replace(/(\d{4})(?=\d)/g, '$1-');
 });
 date.addEventListener(`input`, () => {
   date.value = date.value.replace(/\D/g, '');
-  dateText.textContent = date.value.replace(/(\d{2})(?=\d)/g, '$1/')
+  dateText.textContent = date.value = date.value.replace(/(\d{2})(?=\d)/g, '$1/')
+});
+cvv.addEventListener(`input`, () => {
+  cvv.value = cvv.value.replace(/[а-яА-ЯёЁa-zA-Z-+=!?&]+/g, '')
 });
