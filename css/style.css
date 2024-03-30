@@ -18,7 +18,6 @@
 
 .card {
   width: 415px;
-  height: 809px;
   background: rgba(241, 241, 241, 0.83);
   display: flex;
   flex-direction: column;
@@ -186,6 +185,7 @@
   padding: 20px 92px;
   margin: 0 auto;
   cursor: pointer;
+  margin-bottom: 30px;
 }
 
 .input__holder {
@@ -213,3 +213,23 @@
   line-height: 1;
   font-size: 12px;
 }
+
+.test {
+  font-size: 18px;
+  line-height: 22px;
+  color: #000000;
+  background: #ff35fc;
+  border-radius: 10px;
+  border: none;
+  padding: 20px 92px;
+  margin: 0 auto;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.h2 {
+  font-size: 18px;
+  line-height: 22px;
+  color: #000000;
+}
+
